@@ -1,0 +1,48 @@
+/* Mirror Wings site. Brand values come from the app (Shared/DesignSystem/DSColor.swift). */
+:root{
+  --bg:#FBF6EE; --bg2:#E4F0F8; --surface:#FFFFFF; --text:#2E2230; --muted:#5F5262;
+  --accent:#8A2D6B; --accent-soft:#F5E1EE; --border:#F0E6DA; --shadow:0 10px 30px rgba(46,34,48,.08);
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#1D1822; --bg2:#1D2338; --surface:#2B2430; --text:#F6EFE9; --muted:#CFC3D1;
+    --accent:#F0A9D3; --accent-soft:#3E2639; --border:#3A3142; --shadow:0 10px 30px rgba(0,0,0,.35); }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--text);font:17px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;
+  background:linear-gradient(180deg,var(--bg2) 0,var(--bg) 420px) no-repeat,var(--bg)}
+::selection{background:var(--accent-soft);color:var(--text)}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:680px;margin:0 auto;padding:0 20px}
+header.site{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.01em}
+.brand img{width:36px;height:36px;border-radius:22%;box-shadow:var(--shadow)}
+nav{display:flex;gap:18px;font-weight:600;font-size:15px}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover,nav a[aria-current=page]{color:var(--accent)}
+.hero{text-align:center;padding:40px 0 24px}
+.hero img{width:120px;height:120px;border-radius:22%;box-shadow:0 18px 40px rgba(138,45,107,.28)}
+h1{font-size:40px;line-height:1.1;letter-spacing:-.02em;margin:22px 0 10px}
+h2{font-size:22px;letter-spacing:-.01em;margin:48px 0 12px}
+.tagline{font-size:20px;color:var(--muted);margin:0 auto;max-width:520px}
+.facts{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:22px 0 0;padding:0;list-style:none}
+.facts li{background:var(--accent-soft);color:var(--text);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
+.badge{display:inline-block;margin-top:24px}
+.cards{display:grid;gap:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}
+.card strong{display:block;margin-bottom:2px}
+details{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 18px;margin:10px 0}
+summary{cursor:pointer;font-weight:600;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--muted);font-weight:400}
+details[open] summary::after{content:"–"}
+details p{margin:10px 0 2px;color:var(--text)}
+.updated{color:var(--muted);margin-top:-4px}
+.summary{background:var(--accent-soft);border-radius:18px;padding:16px 20px;margin:20px 0}
+main.legal h2{counter-increment:sec}
+main.legal h2::before{content:counter(sec) ". ";color:var(--muted)}
+main.legal{counter-reset:sec}
+footer{color:var(--muted);font-size:14px;padding:48px 0 40px;border-top:1px solid var(--border);margin-top:56px}
+@media (max-width:480px){h1{font-size:32px}.hero{padding-top:20px}nav{gap:14px}}
