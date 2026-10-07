@@ -3,19 +3,206 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vlad Shchuka · Apps</title>
+<title>Vlad Shchuka</title>
+<meta name="description" content="Vlad Shchuka, iOS engineer since 2015. 15 apps of my own in the App Store, built with AI agents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-body{font-family:-apple-system,system-ui,sans-serif;max-width:640px;margin:48px auto;padding:0 16px;color:#1d1d1f;background:#fff;line-height:1.5}
-a{color:#0a6e5c}
-@media (prefers-color-scheme:dark){body{color:#f5f5f7;background:#111}a{color:#5fd0b8}}
+/* Layout: one 960px column. Hero, facts strip, app shelf, numbered pipeline, work list, contact. */
+:root{
+  --bg:#f6f7f5; --surface:#ffffff; --ink:#14181a; --muted:#5b6461; --line:#dde1dd;
+  --accent:#0a6e5c; --accent-soft:#dcefe9;
+  --f-display:"Schibsted Grotesk",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",-apple-system,system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0f1312; --surface:#171c1b; --ink:#eef1ef; --muted:#9aa5a1; --line:#28302e;
+  --accent:#5fd0b8; --accent-soft:#16312b; color-scheme:dark}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--f-body)}
+.wrap{max-width:960px;margin:0 auto;padding-inline:20px;padding-block:56px 72px;display:flex;flex-direction:column;gap:72px}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.015em}
+h1{font-size:clamp(40px,7vw,68px);line-height:1;font-weight:800}
+h2{font-size:clamp(24px,3.4vw,32px);line-height:1.15;font-weight:700}
+h3{font-size:18px;line-height:1.3;font-weight:700}
+p{margin:0;max-width:64ch}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.label{font:500 12px/1 var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:22px}
+
+.hero{display:flex;flex-direction:column;gap:20px}
+.role{font:700 clamp(19px,2.6vw,24px)/1.25 var(--f-display);color:var(--accent)}
+.lede{font-size:18px;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:500 14px/1 var(--f-body);text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--surface);padding:11px 14px;border-radius:8px}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--line)}
+.fact{padding:18px 16px 18px 0;display:flex;flex-direction:column;gap:4px;min-width:0}
+.fact+.fact{padding-left:16px;border-left:1px solid var(--line)}
+.fact b{font:800 32px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.fact span{font-size:13.5px;color:var(--muted);line-height:1.4}
+
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:22px 14px}
+.app{display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;color:var(--ink);text-align:center;min-width:0}
+.app img{width:76px;height:76px;border-radius:17px;border:1px solid var(--line);display:block}
+.app strong{font-size:13.5px;font-weight:600;line-height:1.25}
+.app small{font:400 11.5px/1.2 var(--f-mono);color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.app img{transition:transform .15s ease}.app:hover img{transform:translateY(-3px)}}
+
+.pipe{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
+.pipe li{counter-increment:s;display:grid;grid-template-columns:40px 1fr;gap:10px;padding:16px 0;border-top:1px solid var(--line)}
+.pipe li::before{content:counter(s,decimal-leading-zero);font:500 13px/1.6 var(--f-mono);color:var(--accent)}
+.pipe b{display:block}
+.pipe span{color:var(--muted);font-size:14.5px}
+
+.work{display:flex;flex-direction:column}
+.job{display:grid;grid-template-columns:150px 1fr;gap:6px 24px;padding:20px 0;border-top:1px solid var(--line)}
+.job .when{font:400 13px/1.7 var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.job div{display:flex;flex-direction:column;gap:6px;min-width:0}
+.job p{color:var(--muted);font-size:15px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tags span{font:400 12px/1 var(--f-mono);padding:5px 7px;border-radius:5px;background:var(--accent-soft);color:var(--accent)}
+
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px}
+footer{font-size:13px;color:var(--muted)}
+
+@media (max-width:720px){
+  .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fact:nth-child(3){padding-left:0;border-left:0}
+  .fact:nth-child(n+3){border-top:1px solid var(--line)}
+  .pipe{grid-template-columns:1fr}
+  .job{grid-template-columns:1fr}
+}
+@media (max-width:420px){.wrap{padding-inline:16px;gap:56px}.shelf{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.proj .dom{font:500 11.5px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.proj p{color:var(--muted);font-size:14.5px}
+.proj .tags{margin-top:auto}
+.stack{display:grid;grid-template-columns:200px 1fr;gap:14px 24px;padding:0;margin:0}
+.stack dt{font-weight:600;font-size:15px;padding-top:3px}
+.stack dd{margin:0;display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.stack dd span{font:400 13px/1 var(--f-mono);padding:7px 9px;border-radius:6px;border:1px solid var(--line);background:var(--surface)}
+@media (max-width:720px){.stack{grid-template-columns:1fr;gap:6px 0}.stack dd{margin-bottom:10px}}
+.skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.skill code{font:500 13px/1.3 var(--f-mono);color:var(--accent)}
+.skill p{color:var(--muted);font-size:14.5px}
+.rules2{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px}
+.rules2 li{padding:16px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.rules2 span{color:var(--muted);font-size:14.5px}
+@media (max-width:720px){.rules2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<h1>Vlad Shchuka</h1>
-<p>Small iOS apps and puzzle games.</p>
-<ul>
-<li><a href="https://xzot.github.io/fairmines/">Fair Mines: Minesweeper Logic</a></li>
-</ul>
-<p>Contact: <a href="mailto:shchukavlad4@gmail.com">shchukavlad4@gmail.com</a></p>
+<main class="wrap">
+
+  <header class="hero">
+    <div class="label">Kropyvnytskyi, Ukraine, remote</div>
+    <h1>Vlad Shchuka</h1>
+    <div class="role">iOS engineer who builds with AI agents</div>
+    <p class="lede">I've been making iOS apps since 2015. I also have my own small app studio. AI agents write most of the code there, and I decide what to build and check everything they do. Below is how it works.</p>
+    <div class="links">
+      <a class="btn primary" href="mailto:shchukavlad4@gmail.com">shchukavlad4@gmail.com</a>
+      <a class="btn" href="https://github.com/Xzot">GitHub</a>
+      <a class="btn" href="#apps">My apps</a>
+    </div>
+  </header>
+
+  <div class="facts">
+    <div class="fact"><b>11</b><span>years of iOS development</span></div>
+    <div class="fact"><b>15</b><span>apps of my own live in the App Store</span></div>
+    <div class="fact"><b>9</b><span>Claude Code skills I wrote</span></div>
+    <div class="fact"><b>28</b><span>languages in each new app</span></div>
+  </div>
+
+  <section id="apps">
+    <div class="label">App Store</div>
+    <h2>My apps</h2>
+    <p>Puzzle games, party games, apps for kids and small utilities. They all have in-app purchases or subscriptions and unit tests.</p>
+    <div class="shelf" id="shelf"></div>
+  </section>
+
+  <section>
+    <div class="label">How I build</div>
+    <h2>How an app gets made</h2>
+    <p>Every app goes through the same steps. Agents do the work at each step. I choose the idea and review the result before it moves on.</p>
+    <ol class="pipe">
+      <li><div><b>Idea analysis</b><span>Competitors, monetization model and a content plan.</span></div></li>
+      <li><div><b>Content</b><span>Parallel subagents write puzzles, word packs or cards in bulk.</span></div></li>
+      <li><div><b>The app</b><span>SwiftUI, MVP with dependency injection, unit tests, StoreKit 2.</span></div></li>
+      <li><div><b>Localization</b><span>One agent per language, up to 28 languages. Another agent then checks that each translation sounds natural.</span></div></li>
+      <li><div><b>Store assets</b><span>Screenshots, legal pages and App Store metadata with keywords per market.</span></div></li>
+      <li><div><b>Submission and review</b><span>App Store Connect setup, in-app purchases, submission and replies to App Review.</span></div></li>
+    </ol>
+  </section>
+
+  <section>
+    <div class="label">Skills</div>
+    <h2>My Claude Code skills</h2>
+    <p>A skill is a set of instructions that lets Claude Code do a whole task on its own. I use these every day.</p>
+    <div class="skills">
+      <div class="skill"><code>ios-app-factory</code><p>Takes an app idea, a similar app or an App Store link and turns it into a finished iOS app. It checks the niche, plans the content, writes it with several agents at once, builds the SwiftUI project with tests, and prepares screenshots, legal pages and App Store Connect.</p></div>
+      <div class="skill"><code>ios-app-update</code><p>Makes the next version of an app that is already in the App Store. It plans the release from the project's docs, builds and tests it, updates screenshots and the store page, then uploads and submits the build.</p></div>
+      <div class="skill"><code>ios-app-localize</code><p>Translates an app into 28 languages. Each language gets its own agent. Then another agent rereads every translation, and the app is checked in each language.</p></div>
+      <div class="skill"><code>appstore-review-fix</code><p>Deals with App Review rejections. It reads Apple's message, checks the code, fixes the problem, writes a short reply and sends the app back for review.</p></div>
+      <div class="skill"><code>tauri-design-new / review</code><p>Designs the interface of a Tauri desktop or mobile app from scratch, or reviews an existing one against Apple, Microsoft and Google guidelines.</p></div>
+      <div class="skill"><code>web-design-new / review</code><p>Does the same for web apps and admin panels. It makes a clickable prototype for a new app, or a list of fixes for an existing one.</p></div>
+      <div class="skill"><code>nuget-update</code><p>Publishes a .NET package to NuGet after code review. It builds from a clean checkout, checks the version and uploads the package.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="label">How I work</div>
+    <h2>Rules I follow</h2>
+    <ul class="rules2">
+      <li><b>Plan first</b><span>The agent writes a plan before any code. I read it and change it if needed.</span></li>
+      <li><b>Notes in the repo</b><span>Each project has a CLAUDE.md file, release notes for every version and handover notes. A new session reads them and knows where things stand.</span></li>
+      <li><b>Separate copies for agents</b><span>When several agents change code at once, each works in its own git worktree with its own simulator.</span></li>
+      <li><b>Test on a real iPhone</b><span>Some crashes never show up in the simulator. Before I submit a release, I go through a checklist on my phone.</span></li>
+      <li><b>Write down every mistake</b><span>When something goes wrong, I write down what happened, why, and what to do so it doesn't happen again.</span></li>
+      <li><b>Plain language</b><span>All app and store text gets a separate review so it reads simply and naturally, in every language.</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="label">Stack</div>
+    <h2>Technologies</h2>
+    <dl class="stack">
+      <dt>iOS</dt><dd><span>Swift</span><span>Objective-C</span><span>SwiftUI</span><span>UIKit</span><span>Combine</span><span>Swift Concurrency</span><span>Core Data</span><span>Realm</span><span>StoreKit 2</span><span>WidgetKit</span><span>App Intents</span><span>Live Activities</span><span>Screen Time API</span><span>AVFoundation</span><span>Speech</span><span>Core ML</span></dd>
+      <dt>Architecture</dt><dd><span>MVVM</span><span>MVP</span><span>MVC</span><span>VIPER</span><span>TCA</span><span>Clean Architecture</span><span>Dependency injection</span><span>Modular Swift packages</span></dd>
+      <dt>Tooling and quality</dt><dd><span>Xcode</span><span>SPM</span><span>CocoaPods</span><span>Fastlane</span><span>SwiftLint</span><span>SwiftGen</span><span>GitLab CI</span><span>Xcode Cloud</span><span>XCTest</span><span>Instruments</span></dd>
+      <dt>Analytics and monetization</dt><dd><span>Firebase</span><span>Adobe Analytics</span><span>Tealium</span><span>AdMob</span><span>Subscriptions</span><span>In-app purchases</span><span>ASO</span></dd>
+      <dt>Backend and desktop</dt><dd><span>TypeScript</span><span>Node.js</span><span>WebSockets</span><span>React</span><span>Tauri</span><span>Supabase</span><span>PostgreSQL</span><span>.NET</span><span>C#</span><span>Docker</span></dd>
+      <dt>AI engineering</dt><dd><span>Claude Code</span><span>Agent skills</span><span>MCP</span><span>Multi-agent pipelines</span><span>LLM extraction</span><span>Knowledge graphs</span><span>Spec-first development</span></dd>
+    </dl>
+  </section>
+
+  <section class="contact">
+    <div class="label">Contact</div>
+    <h2>Looking for iOS or AI engineering work</h2>
+    <p>Remote, full-time or contract. My email is <a href="mailto:shchukavlad4@gmail.com">shchukavlad4@gmail.com</a>.</p>
+  </section>
+
+  <footer>I'm the developer of the apps above. Support and privacy pages for each app are linked from its App Store page.</footer>
+</main>
+
+<script>
+const APPS=[
+ [6816624504,"Logic Trio","Puzzle"],[6816981192,"Quartets","Word game"],[6816711869,"Guesstival","Party game"],
+ [6816734155,"Fair Mines","Puzzle"],[6816840436,"Clueworthy","Logic grid"],[6816840605,"Pixel Album","Nonogram"],
+ [6816840312,"Stillwater","Puzzle"],[6816537476,"LockWords","Widgets"],[6816867700,"ZeroTo","Utility"],
+ [6817300181,"Pitchline","Tuner"],[6817758295,"Dough Clock","Baking"],[6817658793,"Row & Repeat","Knitting"],
+ [6817680527,"Softer Ring","Wellbeing"],[6817313417,"ABC Trails","Kids"],[1605544868,"Emoji Mix Quiz","Game"]
+];
+document.getElementById("shelf").innerHTML=APPS.map(([id,n,c])=>
+ `<a class="app" href="https://apps.apple.com/us/app/id${id}"><img src="assets/icons/${id}.jpg" alt="" width="76" height="76" loading="lazy"><strong>${n}</strong><small>${c}</small></a>`).join("");
+</script>
 </body>
 </html>
