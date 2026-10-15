@@ -1,0 +1,48 @@
+/* Big Whipper site. Warm dusk palette taken from the Golden Hour look of the game. */
+:root{
+  --bg:#FBF3E8; --bg2:#F6DCC6; --surface:#FFFFFF; --text:#2B1E24; --muted:#5E4E55;
+  --accent:#B03F14; --accent-soft:#FBE3D0; --border:#F0DFCF; --shadow:0 10px 30px rgba(43,30,36,.09);
+}
+@media (prefers-color-scheme:dark){
+  :root{ --bg:#1E161B; --bg2:#3A2230; --surface:#2C2229; --text:#F8EFE8; --muted:#D3C3C6;
+    --accent:#FFB070; --accent-soft:#4A2D2A; --border:#40323A; --shadow:0 10px 30px rgba(0,0,0,.35); }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--text);font:17px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;
+  background:linear-gradient(180deg,var(--bg2) 0,var(--bg) 420px) no-repeat,var(--bg)}
+::selection{background:var(--accent-soft);color:var(--text)}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:680px;margin:0 auto;padding:0 20px}
+header.site{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text);text-decoration:none;letter-spacing:-.01em}
+.brand img{width:36px;height:36px;border-radius:22%;box-shadow:var(--shadow)}
+nav{display:flex;gap:18px;font-weight:600;font-size:15px}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover,nav a[aria-current=page]{color:var(--accent)}
+.hero{text-align:center;padding:40px 0 24px}
+.hero img{width:120px;height:120px;border-radius:22%;box-shadow:0 18px 40px rgba(176,63,20,.30)}
+h1{font-size:40px;line-height:1.1;letter-spacing:-.02em;margin:22px 0 10px}
+h2{font-size:22px;letter-spacing:-.01em;margin:48px 0 12px}
+.tagline{font-size:20px;color:var(--muted);margin:0 auto;max-width:520px}
+.facts{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:22px 0 0;padding:0;list-style:none}
+.facts li{background:var(--accent-soft);color:var(--text);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
+.badge{display:inline-block;margin-top:24px}
+.cards{display:grid;gap:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}
+.card strong{display:block;margin-bottom:2px}
+details{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px 18px;margin:10px 0}
+summary{cursor:pointer;font-weight:600;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--muted);font-weight:400}
+details[open] summary::after{content:"–"}
+details p{margin:10px 0 2px;color:var(--text)}
+.updated{color:var(--muted);margin-top:-4px}
+.summary{background:var(--accent-soft);border-radius:18px;padding:16px 20px;margin:20px 0}
+main.legal h2{counter-increment:sec}
+main.legal h2::before{content:counter(sec) ". ";color:var(--muted)}
+main.legal{counter-reset:sec}
+footer{color:var(--muted);font-size:14px;padding:48px 0 40px;border-top:1px solid var(--border);margin-top:56px}
+@media (max-width:480px){h1{font-size:32px}.hero{padding-top:20px}nav{gap:14px}}
