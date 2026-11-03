@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Кузня: що робити на продаж</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one reading column; each product is a band with three variant cards; temper colours of steel mark the product groups */
+:root{
+  --bg:#eef0ef; --panel:#ffffff; --ink:#1d2326; --muted:#5b6569; --line:#d3d8d8;
+  --straw:#b8891c; --bronze:#9a5a2a; --violet:#6a4a8c; --blue:#2f5596; --good:#2e7d4f;
+  --display:"Oswald","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#15191b; --panel:#1e2427; --ink:#e6eaea; --muted:#9aa5a8; --line:#323a3d;
+  --straw:#e0b44a; --bronze:#d08a55; --violet:#ab8ad0; --blue:#7ea2e0; --good:#62c08a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15191b; --panel:#1e2427; --ink:#e6eaea; --muted:#9aa5a8; --line:#323a3d;
+  --straw:#e0b44a; --bronze:#d08a55; --violet:#ab8ad0; --blue:#7ea2e0; --good:#62c08a; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--body)}
+.wrap{max-width:1120px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:56px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(34px,6vw,56px);text-transform:uppercase;letter-spacing:.01em}
+h2{font-size:clamp(26px,4vw,34px);text-transform:uppercase;letter-spacing:.02em}
+h3{font-size:20px}
+p{margin:0;max-width:68ch}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+header{display:grid;gap:18px;border-bottom:3px solid var(--ink);padding-bottom:28px}
+.lead{font-size:18px}
+.idea{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:6px}
+.idea div{border-top:2px solid var(--line);padding-top:10px;display:grid;gap:4px}
+.idea b{font-family:var(--display);font-weight:500;font-size:18px}
+.idea span{color:var(--muted);font-size:15px}
+
+.start{display:grid;gap:20px}
+.picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.pick{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.pick img{aspect-ratio:16/10;object-fit:cover;width:100%;display:block}
+.pick .t{padding:14px 16px 16px;display:grid;gap:6px;align-content:start}
+.pick .when{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--bronze)}
+.pick p{font-size:15px;color:var(--muted)}
+
+table{border-collapse:collapse;width:100%;font-size:15px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font:500 12px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td.r,th.r{text-align:right}
+tr:last-child td{border-bottom:0}
+.bar{display:inline-block;height:8px;border-radius:2px;background:var(--straw);vertical-align:middle;margin-right:8px}
+
+.product{display:grid;gap:18px;padding-top:22px;border-top:6px solid var(--c)}
+.product .head{display:grid;gap:8px}
+.product .tip{font-size:15px;background:var(--panel);border-left:3px solid var(--c);padding:10px 14px;max-width:none}
+.variants{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
+.card .ph{aspect-ratio:16/10;width:100%;object-fit:cover;display:block;background:var(--line)}
+.card .noimg{aspect-ratio:16/10;display:grid;place-items:center;color:var(--muted);font:500 13px/1.3 var(--mono);text-align:center;padding:16px;background:repeating-linear-gradient(135deg,var(--bg) 0 10px,var(--panel) 10px 20px)}
+.card .body{padding:14px 16px 16px;display:grid;gap:10px;align-content:start}
+.card .code{font:500 12px/1 var(--mono);color:var(--c);letter-spacing:.08em}
+.card p{font-size:15px;color:var(--muted)}
+.facts{display:grid;grid-template-columns:1fr auto;gap:4px 12px;font-size:14px;border-top:1px solid var(--line);padding-top:10px}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.facts dd.big{font-size:17px;color:var(--good);font-weight:500}
+.thumbs{display:flex;gap:6px;flex-wrap:wrap}
+.thumbs img{width:64px;height:40px;object-fit:cover;border-radius:3px;border:1px solid var(--line);cursor:pointer}
+.thumbs img:focus-visible,.card .ph:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.badge{justify-self:start;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:5px 7px;border-radius:3px;background:var(--c);color:var(--panel)}
+
+.notes{display:grid;gap:12px}
+.notes ul{margin:0;padding-left:20px;display:grid;gap:8px;max-width:72ch}
+.season{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.season div{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:grid;gap:6px;align-content:start}
+.season b{font-family:var(--display);font-weight:500;font-size:19px}
+.season span{font-size:15px;color:var(--muted)}
+footer{color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:16px}
+
+.lb{position:fixed;inset:0;background:rgba(10,12,13,.88);display:grid;place-items:center;padding:24px;z-index:20;cursor:zoom-out}
+.lb img{max-height:90vh;max-width:100%;border-radius:4px}
+@media (prefers-reduced-motion:no-preference){.card .ph,.pick img{transition:filter .2s}.card .ph:hover{filter:brightness(1.06)}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header>
+  <span class="eyebrow">Для тата · листопад 2026</span>
+  <h1>Що Кузня може робити на продаж</h1>
+  <p class="lead">Зерновози зараз не беруть, а буржуйок на ринку забагато. Нижче десять виробів, які цех може робити з тим, що вже є: зварка, болгарка, різак, вальці. На кожен є три варіанти.</p>
+  <div class="idea">
+    <div><b>Продаємо метал, цеглу купує покупець</b><span>Обод, решітки, дверцята. Цегла важка і є в кожному будмагазині, тому ми її не возимо.</span></div>
+    <div><b>Шлемо Новою поштою</b><span>Вогнища, мангали, сковороди і ніжки плоскі й легкі, тож ринок уся Україна. Туалети, вольєри й паркани продаємо у своєму регіоні.</span></div>
+    <div><b>Історія продає</b><span>«Сковорода з диска борони» чи «вогнище з диска вантажівки» продається краще, ніж просто «мангал».</span></div>
+  </div>
+</header>
+
+<section class="start">
+  <div style="display:grid;gap:8px">
+    <span class="eyebrow">З чого почати</span>
+    <h2>Чотири вироби для першої партії</h2>
+    <p>Зробити по одному зразку, сфотографувати, виставити на OLX і Prom та в Instagram, і два-три тижні дивитися, що питають.</p>
+  </div>
+  <div class="picks" id="picks"></div>
+</section>
+
+<div id="products" style="display:grid;gap:56px"></div>
+
+<section class="notes">
+  <span class="eyebrow">План по сезону</span>
+  <h2>Що і коли</h2>
+  <div class="season">
+    <div><b>Листопад–грудень</b><span>Сковорода з диска борони, подарункові набори під Новий рік, піч під казан (готувати і гріти воду без світла й газу).</span></div>
+    <div><b>Січень–лютий</b><span>Ніжки для столів і лавки (продаються цілий рік). Варити на склад стовпи й секції паркану. Утеплені туалети для будівельників. Сфотографувати комплекти вогнища та мангалу.</span></div>
+    <div><b>Березень–вересень</b><span>Вогнища, мангали з цегли, розбірні мангали, паркани, хвіртки, вольєри. Пік у квітні–травні.</span></div>
+    <div><b>Червень, 1 жовтня</b><span>День батька і День захисників: знову подарункові набори.</span></div>
+  </div>
+</section>
+
+<section class="notes">
+  <span class="eyebrow">Важливо</span>
+  <h2>Що врахувати</h2>
+  <ul>
+    <li><b>Розбірний мангал краще різати на лазері на стороні.</b> Болгаркою виходить утричі довше.</li>
+    <li><b>З печей краще починати з варіанта на 22 л:</b> малу піч під казан легко замінити чавунним литвом.</li>
+    <li><b>Важкі вироби не підуть звичайною посилкою:</b> мангал з коптильнею, вогнище з диска колеса (~47 кг), двоконфорочна піч, туалети й вольєри. Їх робити під замовлення, з самовивозом або своєю машиною.</li>
+    <li><b>Паркани легко порівняти з металобазою.</b> Тому продаємо готовий комплект, який ставиться без зварки, і домовляємось з бригадами, які ставлять паркани.</li>
+    <li><b>Розміри цегли</b> перевірити в місцевих магазинах: ШБ-8 ~230×114×65 мм, червона ~250×120×65 мм. Обод має точно сходитися з кладкою.</li>
+  </ul>
+</section>
+
+<footer>Картинки згенеровані штучним інтелектом (Gemini) і показують ідею, а не готовий виріб. Для оголошень потрібні фото справжніх зразків. Креслення і розкрій лежать у папці «Кузня» на робочому столі, у файлах «Вироби/01…10».</footer>
+</div>
+
+<div class="lb" id="lb" hidden><img id="lbimg" alt=""></div>
+
+<script>
+const P=[
+ {id:"01",name:"Вогнище з цегли",c:"--straw",tip:"Комплект: обод зі смуги 50×5 на ребро, решітка і схема кладки з вогнетривкої цегли ШБ-8. Покупець збирає за пів дня без розчину. Доповнення: поворотна решітка, кільце під казан, вертел, кришка.",
+  v:[
+   {k:"A",n:"Коло Ø80",d:"Три ряди цегли по колу, обод і кругла решітка. Найпростіший і найдешевший у виробництві.",cost:2659,price:3900,h:3.5,img:["01A","01A-2","01A-3","01A-lid"]},
+   {k:"B",n:"Квадрат 80×80",d:"Рамка з кутника і квадратна решітка. Простіше в кладці, бо цеглу не треба різати.",cost:3310,price:4900,h:3.6,img:["01B"]},
+   {k:"C",n:"Преміум Ø100",d:"Великий обод, поворотна решітка на стійці, кільце під казан і вертел. Для баз відпочинку й тих, хто любить приймати гостей.",cost:5631,price:8900,h:6.9,img:["01C"]}]},
+ {id:"02",name:"Мангал з цегли",c:"--bronze",tip:"Конструктор: піддон під вугілля, шампурниця, решітка і схема П-подібної кладки з червоної цегли (12 рядів, насухо). Вигляд як у ресторані, а коштує дешевше за мурований під ключ.",
+  v:[
+   {k:"A",n:"На 8 шампурів",d:"Піддон під вугілля і упори під шампури. Базовий комплект.",cost:3332,price:4900,h:3.8,img:["02A"]},
+   {k:"B",n:"На 12 шампурів",d:"Довший, з решіткою-грилем і кільцем під казан.",cost:5648,price:8200,h:6.2,img:["02B"]},
+   {k:"C",n:"З кришкою-коптильнею",d:"Відкидна кришка з термометром і бічна стільниця. Великий і важкий, тож лише під замовлення.",cost:11432,price:16500,h:12.2,img:["02C"],heavy:true}]},
+ {id:"03",name:"Піч під казан з цегли",c:"--violet",tip:"Сталева «печна фурнітура» одним набором: плита з кільцями під казан, дверцята топки й піддувала, колосник, патрубок під трубу і схема кладки. Плюс під час війни: можна готувати й гріти воду без газу і світла.",
+  v:[
+   {k:"A",n:"Казан 12 л",d:"Мала піч для дачі, найпростіша кладка.",cost:6259,price:8900,h:7.1,img:[]},
+   {k:"B",n:"Казан 22 л + труба",d:"Повний комплект з трубою 2 м. З цієї печі варто починати.",cost:9917,price:14500,h:9.6,img:[]},
+   {k:"C",n:"Двоконфорочна",d:"Казан з одного боку, плита під чайник і сковороду з другого. Дуже важка, лише під замовлення.",cost:10827,price:15900,h:10.0,img:[],heavy:true}]},
+ {id:"04",name:"Вироби з дисків борони і вантажівок",c:"--blue",tip:"Те, що конкурентам дістати важко, а в нас лежить у цеху або в знайомих фермерів, що згортають роботу.",
+  v:[
+   {k:"A",n:"Сковорода з диска борони",d:"Сковорода-садж Ø540 мм з ручками, обпалена олією. Найдешевший старт, продається цілий рік.",cost:2009,price:2900,h:2.8,img:["04A"]},
+   {k:"B",n:"Сковорода на тризі",d:"Та сама сковорода плюс складна тринога над вогнищем. Комплект для плову.",cost:3279,price:4700,h:4.6,img:["04B"]},
+   {k:"C",n:"Вогнище з диска колеса",d:"Масивне вогнище на ніжках з кутника, з решіткою і ручками. Важить близько 47 кг, тож посилка вантажна.",cost:4409,price:6300,h:5.5,img:["04C"],heavy:true}]},
+ {id:"05",name:"Розбірний мангал на пазах",c:"--straw",tip:"Збирається за хвилину без зварки й інструментів, у розібраному вигляді плаский, як папка. Для туристів, рибалок, автомобілістів і військових. Деталі різати на лазері на стороні за кресленням, а самі лише гнемо і фарбуємо.",
+  v:[
+   {k:"A",n:"Туристичний, 2 мм",d:"На 6 шампурів, легкий.",cost:1920,price:2790,h:1.5,img:["05A"]},
+   {k:"B",n:"Посилений 3 мм з чохлом",d:"На 8 шампурів, з ручкою і брезентовим чохлом. Товщина вирізняє його серед «одноразових» конкурентів.",cost:3544,price:4990,h:2.0,img:["05B"]},
+   {k:"C",n:"Подарунковий",d:"З вирізаним орнаментом і табличкою з ім'ям. Готовий подарунок.",cost:4415,price:6490,h:2.5,img:["05C"]}]},
+ {id:"06",name:"Ніжки і каркаси для меблів",c:"--bronze",tip:"Підстолля з профтруби, на яке людина ставить свою стільницю. Купують ті, хто робить ремонт, столярі, кафе й офіси. Ринок стабільний цілий рік, проста серія.",
+  v:[
+   {k:"A",n:"П-ніжки (пара)",d:"Труба 60×40, чорний мат. Найпопулярніша форма, з неї починати.",cost:3084,price:4400,h:3.4,img:["06A","06A-2"]},
+   {k:"B",n:"X-ніжки (пара)",d:"Хрестоподібні, стиль лофт.",cost:3530,price:5000,h:4.3,img:["06B"]},
+   {k:"C",n:"Каркас лавки",d:"Труба 40×40, 120 см, під дерев'яне сидіння.",cost:3312,price:4700,h:4.3,img:["06C"]}]},
+ {id:"07",name:"Подарункові набори",c:"--violet",tip:"Зібрані з виробів вище, красиво запаковані в дерев'яну або крафтову коробку з карткою про те, з чого зроблено. Пік: Новий рік, День батька, 1 жовтня, дні народження.",
+  v:[
+   {k:"A",n:"«Казанок»",d:"Сковорода з диска борони, тринога, кочерга, рукавиці в дерев'яному ящику.",cost:5256,price:7900,h:5.8,img:["07A"]},
+   {k:"B",n:"«Вогнище»",d:"Обод вогнища, поворотна решітка, вертел і картка зі схемою кладки.",cost:4120,price:5900,h:6.2,img:["07B"]},
+   {k:"C",n:"«Мангальник»",d:"Шість шампурів з крученими ручками, кочерга, лопатка і підставка.",cost:4447,price:6300,h:5.2,img:["07C"]}]},
+ {id:"08",name:"Собачі будки і вольєри",c:"--blue",tip:"Каркас з профтруби, зовні профлист, всередині OSB з утеплювачем. Купують власники приватних будинків з великими собаками. Вольєри робити під замовлення у своєму регіоні, з доставкою своєю машиною і монтажем. Будку краще продавати разом з вольєром.",
+  v:[
+   {k:"A",n:"Утеплена будка",d:"1200×800 мм під велику собаку. Дах відкидається для прибирання, підлога піднята на ніжках.",img:["08A"]},
+   {k:"B",n:"Секції вольєру 2×3 м",d:"Зварні секції з профтруби і прутка, стійки на п'ятах, хвіртка із засувом. Збирається на болтах.",img:["08B"],heavy:true},
+   {k:"C",n:"Вольєр з дахом і будкою",d:"Секції вольєру, дах з профлисту і утеплена будка всередині. Готовий двір для собаки.",img:["08C"],heavy:true}]},
+ {id:"09",name:"Вуличні туалети",c:"--straw",tip:"Металевий каркас з обшивкою профлистом, кабіна 1,0×1,2 м. Найперспективніший варіант утеплений: для будівельних фірм, блокпостів, громад і укриттів, з піком попиту взимку. Возити своєю вантажівкою або маніпулятором. Біотуалет або яму продавати окремо.",
+  v:[
+   {k:"A",n:"Дачний",d:"Каркас, профлист, односхилий дах, двері з клямкою, сидіння. Для дач і городів поруч.",img:["09A"],heavy:true},
+   {k:"B",n:"Утеплений для будмайданчика",d:"OSB з утеплювачем, вентиляція, віконце, рукомийник. Рим-болти, щоб піднімати краном, і полозся знизу.",img:["09B"],heavy:true},
+   {k:"C",n:"Розбірний на болтах",d:"Панелі-рамки, які збирають на місці без зварки. Їде плоским пакетом на палеті по всій Україні.",img:["09C"]}]},
+ {id:"10",name:"Забори",c:"--bronze",tip:"Продавати не метри труби, а зручність: комплект на 10 погонних метрів, все нарізано, приварено і пофарбовано, ставиться без зварки. Продавати через бригади-монтажників і будмагазини. Варити на склад узимку, щоб навесні мати запас. Монтаж краще віддати партнерській бригаді.",
+  v:[
+   {k:"A",n:"Стовпи з лагами",d:"Стовпи з профтруби з п'ятою, заглушкою і кронштейнами, плюс лаги. Покупець сам кріпить профлист, штахетник або дошку. Є і дешевша версія з тоншої труби.",img:["10A"]},
+   {k:"B",n:"Зварні секції",d:"Готові секції 2,4×1,75 м з металевого штахетника між стовпами. Гарний вигляд без додаткової обшивки.",img:["10B"]},
+   {k:"C",n:"Хвіртка зі стовпами",d:"Хвіртка 1000×1800 мм на своїх стовпах, із замком і петлями. Додатковий продаж до будь-якого паркану.",img:["10C"]}]}
+];
+const PICKS=[
+ {code:"04A",when:"Зараз",why:"Найменше вкладень: диск борони, ручки й олія. Продається цілий рік і добре йде як подарунок."},
+ {code:"07A",when:"До Нового року",why:"Набір з тієї ж сковороди, триноги і кочерги, гарно запакований."},
+ {code:"05B",when:"До весни",why:"Мало зварки, легко шле Новою поштою. Деталі ріжуть на лазері на стороні."},
+ {code:"01A",when:"До квітня",why:"Комплект вогнища під цеглу. Майже немає конкурентів, простий у виробництві."}
+];
+const fmt=n=>Math.round(n).toLocaleString("uk-UA");
+const all=[];
+P.forEach(p=>p.v.forEach(v=>{v.code=p.id+v.k;v.p=p;v.earn=v.price-v.cost;v.perH=v.earn/v.h;all.push(v)}));
+const byCode=Object.fromEntries(all.map(v=>[v.code,v]));
+const src=n=>"img/"+n+".jpg";
+
+document.getElementById("picks").innerHTML=PICKS.map(x=>{const v=byCode[x.code];return `
+ <article class="pick"><img src="${src(v.img[0])}" alt="${v.p.name}: ${v.n}" loading="lazy">
+  <div class="t"><span class="when">${x.when}</span><h3>${v.p.name}: ${v.n}</h3>
+  <p>${x.why}</p></div></article>`}).join("");
+
+document.getElementById("products").innerHTML=P.map(p=>`
+ <section class="product" style="--c:var(${p.c})" id="v${p.id}">
+  <div class="head"><span class="eyebrow">Виріб ${p.id}</span><h2>${p.name}</h2><p class="tip">${p.tip}</p></div>
+  <div class="variants">${p.v.map(v=>`
+   <article class="card">
+    ${v.img.length?`<img class="ph" src="${src(v.img[0])}" alt="${p.name}: ${v.n}" loading="lazy" tabindex="0">`:`<div class="noimg">Картинки ще немає</div>`}
+    <div class="body">
+     <span class="code">${v.code}</span><h3>${v.n}</h3><p>${v.d}</p>
+     ${v.heavy?`<span class="badge">Важкий: під замовлення</span>`:""}
+     ${v.img.length>1?`<div class="thumbs">${v.img.map(i=>`<img src="${src(i)}" alt="Ще одна картинка: ${v.n}" loading="lazy" tabindex="0">`).join("")}</div>`:""}
+    </div>
+   </article>`).join("")}</div>
+ </section>`).join("");
+
+const lb=document.getElementById("lb"),lbi=document.getElementById("lbimg");
+function open(img){lbi.src=img.src;lbi.alt=img.alt;lb.hidden=false}
+document.addEventListener("click",e=>{
+  const t=e.target;
+  if(t.closest(".thumbs")&&t.tagName==="IMG"){const ph=t.closest(".card").querySelector(".ph");ph.src=t.src;return}
+  if(t.matches(".card .ph,.pick img"))open(t);
+  else if(t.closest("#lb"))lb.hidden=true;
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape")lb.hidden=true;
+  if(e.key==="Enter"&&e.target.matches(".card .ph"))open(e.target);
+  if(e.key==="Enter"&&e.target.closest(".thumbs"))e.target.click();
+});
+</script>
+</body>
+</html>
