@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["SDQPWCCGCS.com.vladshchuka.quartets"],
+        "components": [
+          { "/": "/quartets/q/*", "comment": "Quartets: a board a friend wrote, carried in the link fragment" }
+        ]
+      }
+    ]
+  }
+}
